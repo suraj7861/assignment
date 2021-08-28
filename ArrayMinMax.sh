@@ -1,4 +1,4 @@
-#!/bin/bash
+?#!/bin/bash
 
  for (( i=0; i<10; i++ ))
 do
@@ -14,12 +14,14 @@ do
 	then
 		secmax=$max;
 		max=${arr[$i]};
-	elif [ secmax < max && secmax < arr[$i] ]
+	elif [ ${arr[i]} != $max ] && [ ${arr[i]} -gt $secmax ] 
+	then	
 		secmax=${arr[$i]};
+	fi	
 done
 echo "second largest number is"$secmax
-min=0
-secmin=0
+min=${arr[0]}
+secmin=${arr[0]}
 
 for (( i=0; i<10; i++))
 do
@@ -27,8 +29,10 @@ do
         then
                 secmin=$min;
                 min=${arr[$i]};
-        elif [ secmin > min && secmin > arr[$i] ]
+	 elif [ ${arr[i]} != $min ] && [ ${arr[i]} -lt $secmin ]
+	then
                 secmin=${arr[$i]};
+	fi
 done
 echo "second smallest number is"$secmin
 
